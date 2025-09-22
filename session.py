@@ -47,6 +47,7 @@ while True:
 
     result = asyncio.run(get_stream_events(session, message))
 
+# @todo: need concept of a dictionary to map session id to phone number for conversation continuity
 
 
 
