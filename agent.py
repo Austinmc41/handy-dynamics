@@ -1,5 +1,4 @@
 import vertexai
-from vertexai import agent_engines # For the prebuilt templates
 from google.adk.agents import Agent
 from vertexai.agent_engines import AdkApp
 from google.genai import types

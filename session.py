@@ -1,10 +1,9 @@
-from time import sleep
-
 from google.adk.sessions import Session
 from vertexai.preview.reasoning_engines.templates.adk import AdkApp
-from hello import app
+from agent import app
 import asyncio
 
+QUIT = "q!"
 
 async def create_session(app: AdkApp, user_id: str):
     return await app.async_create_session(user_id=user_id)
@@ -16,7 +15,7 @@ async def list_sessions(app: AdkApp, user_id: str):
     await app.async_list_sessions(user_id=user_id)
 
 
-async def get_stream_events(session: Session):
+async def get_stream_events(session: Session, message: str):
     """
     Calls an asynchronous streaming function and collects events.
 
@@ -28,7 +27,7 @@ async def get_stream_events(session: Session):
     async for event in app.async_stream_query(
             user_id="12345",
             session_id=session.id,
-            message="okay that sounds good what can we do",
+            message=message,
     ):
         print(f"Received event: {event}")
         events.append(event)
@@ -38,7 +37,16 @@ async def get_stream_events(session: Session):
 
 
 session = asyncio.run(create_session(app,"12345"))
-result = asyncio.run(get_stream_events(session))
+
+
+while True:
+    message = input("Send message to handy gem: ")
+
+    if message == QUIT:
+        break
+
+    result = asyncio.run(get_stream_events(session, message))
+
 
 
 
