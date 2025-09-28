@@ -7,7 +7,7 @@ from google.genai import types
 model = "gemini-2.0-flash"
 
 # setting up the environment
-vertexai.init(  # For service interactions via client.agent_engines
+vertexai.init(  # For services interactions via client.agent_engines
     project="handy-bot",
     location="us-east4",
     staging_bucket="gs://handy-agent-store"
