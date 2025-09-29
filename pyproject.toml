@@ -7,5 +7,6 @@ requires-python = ">=3.11"
 dependencies = [
     "fastapi[standard]>=0.116.2",
     "google-adk>=1.14.1",
+    "psycopg2-binary>=2.9.10",
     "python-dotenv>=1.1.1",
 ]

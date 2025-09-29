@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -7,7 +9,8 @@ from dotenv import load_dotenv
 from api.models.db_models.bot_user_db import Base
 from api.repositories.alchemy_bot_user_respository import AlchemyBotUserRepository
 
-load_dotenv()
+dotenv_path = Path('api/dependencies/.env')
+load_dotenv(dotenv_path)
 
 db_user = os.getenv("DB_USER")
 db_pass = os.getenv("DB_PASS")
