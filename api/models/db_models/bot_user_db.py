@@ -10,4 +10,3 @@ class BotUserDB(Base):
     phone_no = Column(String(15), index=True)
     last_active = Column(DateTime)
     created_at = Column(DateTime)
-
