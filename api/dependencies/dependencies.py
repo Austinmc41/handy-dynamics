@@ -7,7 +7,6 @@ import os
 from dotenv import load_dotenv
 
 from api.models.db_models.bot_user_db import Base
-from api.repositories.adk_session_repository import ADKSessionRepository
 from api.repositories.alchemy_adk_session_repository import AlchemyADKSessionRepository
 from api.repositories.alchemy_bot_user_respository import AlchemyBotUserRepository
 
