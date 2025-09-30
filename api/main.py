@@ -1,11 +1,12 @@
 import uvicorn
 from fastapi import FastAPI
-from api.routers import bot_users
+from api.routers import bot_users, adk_sessions
 
 app = FastAPI()
 
 
 app.include_router(bot_users.router)
+app.include_router(adk_sessions.router)
 
 @app.get("/")
 def root():
