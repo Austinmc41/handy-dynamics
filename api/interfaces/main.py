@@ -3,14 +3,6 @@ from typing import List
 import uvicorn
 from fastapi import FastAPI
 from fastapi.params import Depends
-import sys
-import os
-
-# print("Current Working Directory:", os.getcwd())
-# print("Python Module Search Path (sys.path):")
-# for path in sys.path:
-#     print(path)
-#
 
 from api.dependencies.dependencies import get_sqlalchemy_repository
 from api.models.schemas.bot_user import BotUser
