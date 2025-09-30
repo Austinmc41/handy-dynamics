@@ -12,6 +12,7 @@ class AlchemyBotUserRepository(BotUserRepository):
         self.session = session
 
     def get_all(self) -> List[BotUser]:
-        bot_users = self.session.query(BotUserDB).all()
-        return [BotUser(**bot_user.__dict__) for bot_user in bot_users]
+        query_users = self.session.query(BotUserDB).all()
+        return [BotUser.model_validate(query_user) for query_user in query_users]
+
 
