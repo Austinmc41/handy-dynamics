@@ -18,10 +18,7 @@ db_host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
 db_port = os.getenv("DB_PORT")
 
-
 DATABASE_URL = f"postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}"
-
-
 
 # @todo # get user, password and format engine to proper url
 def get_sqlalchemy_repository() -> AlchemyBotUserRepository:

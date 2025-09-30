@@ -1,5 +1,6 @@
 from typing import List
 
+
 from api.models.db_models.bot_user_db import BotUserDB
 from api.models.schemas.bot_user import BotUser
 from api.repositories.bot_user_respository import BotUserRepository
@@ -11,6 +12,6 @@ class AlchemyBotUserRepository(BotUserRepository):
         self.session = session
 
     def get_all(self) -> List[BotUser]:
-        query = self.session.query(BotUserDB)
-        bot_user_db = query.all()
-        return [BotUser.model_validate(b) for b in bot_user_db]
+        bot_users = self.session.query(BotUserDB).all()
+        return [BotUser(**bot_user.__dict__) for bot_user in bot_users]
+
