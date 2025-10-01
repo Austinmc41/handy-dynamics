@@ -30,7 +30,7 @@ Making the lives of handymen easier by leveraging GenAI to improve client intera
 
 ### One-time repo setup
 
-1. Install `uv` if you don't have it yet
+1. Install `uv` if you don't have it yet. Follow this [article](https://docs.astral.sh/uv/getting-started/installation/)
 2. `uv sync` while in `~/handy-dynamics`
 3. `source .venv/bin/activate`
 4. Run API via `python -m api.main`. You should be able to navigate to `127.0.0.1:8000/docs`
