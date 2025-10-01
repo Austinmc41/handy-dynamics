@@ -4,7 +4,7 @@ from fastapi import APIRouter
 from fastapi.params import Depends
 
 from api.dependencies.dependencies import get_adk_session_repository, get_bot_user_repository
-from api.services.adk_sesssion_service import ADKSessionService
+from api.services.adk_session_service import ADKSessionService
 from api.models.schemas.adk_session import ADKSession
 
 
