@@ -1,7 +1,7 @@
 DROP TABLE adk_session;
 DROP TABLE bot_user;
 DROP TABLE contractor;
-DROP TABLE agent
+DROP TABLE agent;
 
 CREATE TABLE bot_user
 (
@@ -26,16 +26,15 @@ contractor_id INT PRIMARY KEY,
 name TEXT,
 created_at TIMESTAMP,
 email TEXT,
-phone_no VARCHAR(15),
+phone_no VARCHAR(15)
 );
 
 CREATE TABLE agent
 (
 id INT PRIMARY KEY,
 created_at TIMESTAMP,
-contractor_id INT
-
-FOREIGN KEY contractor_id REFERENCES contractor(contractor_id)
+contractor_id INT,
+FOREIGN KEY (contractor_id) REFERENCES contractor(contractor_id)
 );
 
 CREATE INDEX idx_phone_no
