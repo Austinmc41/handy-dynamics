@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from api.models.db_models.bot_user_db import Base
 from api.repositories.alchemy_adk_session_repository import AlchemyADKSessionRepository
+from api.repositories.alchemy_agent_repository import AlchemyAgentRepository
 from api.repositories.alchemy_bot_user_respository import AlchemyBotUserRepository
 from api.repositories.alchemy_contractor_repository import AlchemyContractorRepository
 
@@ -33,6 +34,12 @@ def get_contractor_repository() -> AlchemyContractorRepository:
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     return AlchemyContractorRepository(Session())
+
+def get_agent_repository() -> AlchemyAgentRepository:
+    engine = create_engine(DATABASE_URL)
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    return AlchemyAgentRepository(Session())
 
 
 def get_adk_session_repository() -> AlchemyADKSessionRepository:
