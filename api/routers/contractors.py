@@ -12,6 +12,6 @@ router = APIRouter(
 )
 
 @router.get('/', response_model=List[Contractor])
-def get_bot_users(repo = Depends(get_contractor_repository)):
+def get_agents(repo = Depends(get_contractor_repository)):
     service = ContractorService(repo)
     return service.get_bot_users()
