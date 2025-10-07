@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 from fastapi import APIRouter
 from fastapi.params import Depends
@@ -15,3 +16,14 @@ router = APIRouter(
 def get_contractors(repo = Depends(get_contractor_repository)):
     service = ContractorService(repo)
     return service.get_bot_users()
+
+@router.post('/')
+def create_contractor(name: str,
+                 created_at: datetime,
+                 email: str,
+                 phone_no: str,
+                 repo = Depends(get_contractor_repository)):
+    service = ContractorService(repo)
+    contractor = service.create_contractor(name, created_at, email, phone_no)
+    return contractor.model_dump()
+

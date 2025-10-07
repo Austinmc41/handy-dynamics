@@ -28,7 +28,7 @@ VALUES
 
 
 -- 10 Records for contractor
-INSERT INTO contractor (contractor_id, name, created_at, email, phone_no)
+INSERT INTO contractor (id, name, created_at, email, phone_no)
 VALUES
 (101, 'HandyMan Services', '2025-09-01 10:00:00', 'handy@example.com', '4041112222'),
 (102, 'PlumbFast Inc.', '2025-09-05 11:30:00', 'plumb@example.com', '7703334444'),

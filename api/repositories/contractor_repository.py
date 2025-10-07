@@ -8,3 +8,7 @@ class ContractorRepository(ABC):
     @abstractmethod
     def get_all(self, phone_no: Optional[str] = None, name: Optional[str] = None) -> List[Contractor]:
         pass
+
+    @abstractmethod
+    def add(self, contractor):
+        pass

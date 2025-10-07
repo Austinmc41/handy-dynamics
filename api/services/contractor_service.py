@@ -10,3 +10,8 @@ class ContractorService:
 
     def get_bot_users(self) -> List[Contractor]:
         return self.repository.get_all()
+
+    def create_contractor(self, name, created_at, email, phone_no) -> Contractor:
+        contractor = Contractor(name=name, created_at=created_at, email=email, phone_no=phone_no)
+        self.repository.add(contractor)
+        return contractor

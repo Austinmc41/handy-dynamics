@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, DateTime
-from api.models.db_models.bot_user_db import Base
+
+from api.models.db_models import Base
 
 
 class ADKSessionDB(Base):

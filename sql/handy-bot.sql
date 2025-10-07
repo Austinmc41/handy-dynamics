@@ -22,7 +22,7 @@ CREATE TABLE adk_session
 
 CREATE TABLE contractor
 (
-contractor_id INT PRIMARY KEY,
+id SERIAL PRIMARY KEY,
 name TEXT,
 created_at TIMESTAMP,
 email TEXT,
@@ -31,10 +31,10 @@ phone_no VARCHAR(15)
 
 CREATE TABLE agent
 (
-id INT PRIMARY KEY,
+id SERIAL PRIMARY KEY,
 created_at TIMESTAMP,
 contractor_id INT,
-FOREIGN KEY (contractor_id) REFERENCES contractor(contractor_id)
+FOREIGN KEY (contractor_id) REFERENCES contractor(id)
 );
 
 CREATE INDEX idx_phone_no

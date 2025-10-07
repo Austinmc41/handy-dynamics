@@ -14,3 +14,8 @@ class AlchemyContractorRepository(ContractorRepository):
     def get_all(self, phone_no: Optional[str] = None, name: Optional[str] = None) -> List[Contractor]:
         query_contractors = self.session.query(ContractorDB)
         return [Contractor.model_validate(query_contractor, from_attributes=True) for query_contractor in query_contractors.all()]
+
+    def add(self, contractor):
+        contractor_db = ContractorDB(**contractor.dict())
+        self.session.add(contractor_db)
+        self.session.commit()

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
-from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+from api.models.db_models import Base
+
 
 class BotUserDB(Base):
     __tablename__ = "bot_user"

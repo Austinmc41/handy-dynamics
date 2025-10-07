@@ -10,3 +10,8 @@ class AgentService:
 
     def get_agents(self) -> List[Agent]:
         return self.repository.get_all()
+
+    def create_agent(self, created_at, contractor_id) -> Agent:
+        agent = Agent(created_at=created_at, contractor_id=contractor_id)
+        self.repository.add(agent)
+        return agent
