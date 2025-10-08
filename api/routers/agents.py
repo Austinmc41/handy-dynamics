@@ -27,12 +27,13 @@ def create_agent(created_at: datetime,
 
 @router.put("/{agent_id}")
 def update_agent(
+    agent_id: int,
     created_at: datetime,
     contractor_id: int,
     repo=Depends(get_agent_repository)
     ):
     service = AgentService(repo)
-    updated_agent = service.update_agent(created_at, contractor_id)
+    updated_agent = service.update_agent(agent_id, created_at, contractor_id)
     if not updated_agent:
         raise HTTPException(status_code=404, detail="Agent not found")
     return updated_agent.model_dump()

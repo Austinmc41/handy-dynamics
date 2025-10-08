@@ -12,3 +12,11 @@ class AgentRepository(ABC):
     @abstractmethod
     def add(self, agent):
         pass
+
+    @abstractmethod
+    def get_by_id(self, agent_id):
+        pass
+
+    @abstractmethod
+    def update(self, updated_agent):
+        pass
