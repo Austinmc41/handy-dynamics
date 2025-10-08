@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from api.dependencies.dependencies import get_agent_repository
 from api.models.schemas.agent import Agent
@@ -24,3 +24,15 @@ def create_agent(created_at: datetime,
     service = AgentService(repo)
     agent = service.create_agent(created_at, contractor_id)
     return agent.model_dump()
+
+@router.put("/{agent_id}")
+def update_agent(
+    created_at: datetime,
+    contractor_id: int,
+    repo=Depends(get_agent_repository)
+    ):
+    service = AgentService(repo)
+    updated_agent = service.update_agent(created_at, contractor_id)
+    if not updated_agent:
+        raise HTTPException(status_code=404, detail="Agent not found")
+    return updated_agent.model_dump()

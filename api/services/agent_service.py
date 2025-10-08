@@ -15,3 +15,6 @@ class AgentService:
         agent = Agent(created_at=created_at, contractor_id=contractor_id)
         self.repository.add(agent)
         return agent
+
+    def update_agent(self, created_at, contractor_id):
+        pass

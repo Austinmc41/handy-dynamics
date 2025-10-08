@@ -12,3 +12,11 @@ class ContractorRepository(ABC):
     @abstractmethod
     def add(self, contractor):
         pass
+
+    @abstractmethod
+    def get_by_id(self, contractor_id):
+        pass
+
+    @abstractmethod
+    def update(self, updated_contractor):
+        pass

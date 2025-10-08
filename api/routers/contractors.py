@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from fastapi.params import Depends
 
 from api.dependencies.dependencies import get_contractor_repository
@@ -26,4 +26,19 @@ def create_contractor(name: str,
     service = ContractorService(repo)
     contractor = service.create_contractor(name, created_at, email, phone_no)
     return contractor.model_dump()
+
+@router.put("/{contractor_id}")
+def update_contractor(
+    contractor_id: int,
+    name: str,
+    created_at: datetime,
+    email: str,
+    phone_no: str,
+    repo=Depends(get_contractor_repository)
+    ):
+    service = ContractorService(repo)
+    updated_contractor = service.update_contractor(contractor_id, name, created_at, email, phone_no)
+    if not updated_contractor:
+        raise HTTPException(status_code=404, detail="Contractor not found")
+    return updated_contractor.model_dump()
 
