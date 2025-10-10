@@ -25,3 +25,34 @@ VALUES
 (8,  '2025-09-24 19:10:00', '2025-09-24 19:15:00'),
 (9,  '2025-09-25 12:55:00', '2025-09-25 13:00:00'),
 (10, '2025-09-24 15:20:00', '2025-09-24 15:45:00');
+
+
+-- 10 Records for contractor
+INSERT INTO contractor (id, name, created_at, email, phone_no)
+VALUES
+(101, 'HandyMan Services', '2025-09-01 10:00:00', 'handy@example.com', '4041112222'),
+(102, 'PlumbFast Inc.', '2025-09-05 11:30:00', 'plumb@example.com', '7703334444'),
+(103, 'ElectroFix Co.', '2025-09-10 14:45:00', 'fix@example.com', '6785556666'),
+(104, 'MowBetter Landscaping', '2025-09-12 08:00:00', 'mow@example.com', '4702221111'),
+(105, 'Home Renovation Pros', '2025-09-15 13:00:00', 'renovate@example.com', '4046663333'),
+(106, 'Elite Painting', '2025-09-18 09:30:00', 'paint@example.com', '7709990000'),
+(107, 'Quick Locksmith', '2025-09-20 16:00:00', 'lock@example.com', '6781230987'),
+(108, 'Clean Sweep HVAC', '2025-09-21 11:00:00', 'hvac@example.com', '4704567890'),
+(109, 'Roof Top Repair', '2025-09-22 14:00:00', 'roof@example.com', '4047890123'),
+(110, 'Drainage Solutions', '2025-09-23 10:00:00', 'drain@example.com', '7708903456');
+
+
+-- 10 Records for agent
+-- Distributed among the 10 contractors
+INSERT INTO agent (id, created_at, contractor_id)
+VALUES
+(1, '2025-09-02 09:00:00', 101),
+(2, '2025-09-06 10:00:00', 102),
+(3, '2025-09-11 15:00:00', 103),
+(4, '2025-09-13 08:30:00', 104),
+(5, '2025-09-16 13:30:00', 105),
+(6, '2025-09-19 09:45:00', 106),
+(7, '2025-09-21 16:30:00', 107),
+(8, '2025-09-22 11:15:00', 108),
+(9, '2025-09-23 14:30:00', 109),
+(10, '2025-09-24 10:00:00', 110);
