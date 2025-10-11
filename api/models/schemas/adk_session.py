@@ -3,6 +3,6 @@ from pydantic import BaseModel
 
 
 class ADKSession(BaseModel):
-    session_id:  int
+    session_id: int
     created_at: datetime
     last_active: datetime

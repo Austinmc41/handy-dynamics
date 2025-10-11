@@ -11,9 +11,14 @@ class AlchemyContractorRepository(ContractorRepository):
     def __init__(self, session: Session):
         self.session = session
 
-    def get_all(self, phone_no: Optional[str] = None, name: Optional[str] = None) -> List[Contractor]:
+    def get_all(
+        self, phone_no: Optional[str] = None, name: Optional[str] = None
+    ) -> List[Contractor]:
         query_contractors = self.session.query(ContractorDB)
-        return [Contractor.model_validate(query_contractor, from_attributes=True) for query_contractor in query_contractors.all()]
+        return [
+            Contractor.model_validate(query_contractor, from_attributes=True)
+            for query_contractor in query_contractors.all()
+        ]
 
     def add(self, contractor: Contractor):
         contractor_db = ContractorDB(**contractor.dict())
@@ -34,4 +39,3 @@ class AlchemyContractorRepository(ContractorRepository):
             contractor_db.email = contractor.email
             contractor_db.phone_no = contractor.phone_no
             self.session.commit()
-

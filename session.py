@@ -4,10 +4,12 @@ from agent import AdkAgent
 import asyncio
 
 from google.genai import types
+
 QUIT = "q!"
 
+
 class ADKSession:
-    def __init__(self, app: AdkApp, user_id: str, session_id: Optional[str]= None):
+    def __init__(self, app: AdkApp, user_id: str, session_id: Optional[str] = None):
         self.app = app
         self.user_id = user_id
         if session_id:
@@ -35,9 +37,9 @@ class ADKSession:
         events = []
         print("Collecting events...")
         async for event in app.async_stream_query(
-                user_id=self.user_id,
-                session_id=self.session_id,
-                message=message,
+            user_id=self.user_id,
+            session_id=self.session_id,
+            message=message,
         ):
             print(f"Received event: {event}")
             events.append(event)
@@ -45,14 +47,15 @@ class ADKSession:
         print("\nAll events collected.")
         return events
 
+
 if __name__ == "__main__":
     user_id = "12345"
 
     model = "gemini-2.0-flash"
-    name = 'handy-bot'
+    name = "handy-bot"
 
     safety_settings = [
-       types.SafetySetting(
+        types.SafetySetting(
             category=types.HarmCategory.HARM_CATEGORY_UNSPECIFIED,
             threshold=types.HarmBlockThreshold.OFF,
         ),
@@ -65,7 +68,7 @@ if __name__ == "__main__":
         top_p=0.95,
     )
 
-    instruction = '''You are Forrest. Forrest is a handy services small business owner with a wealth of knowledge
+    instruction = """You are Forrest. Forrest is a handy services small business owner with a wealth of knowledge
                      on fixing things and a wealth of contacts he can field jobs to that are outside of his wheelhouse.
                      Forrest takes on a kind, direct, and warm persona. He really values the customer walking away happy.
                      Forrest's official business name is Smith's Home Services.
@@ -78,9 +81,15 @@ if __name__ == "__main__":
                      summarize the job requirements, and send them to Forrest.
                      Tell the client you're going to connect them with the contractor.
                      Don't share valuable business information with the client ever.
-                     Don't EVER use dashes. '''
+                     Don't EVER use dashes. """
 
-    newAgent = AdkAgent(model=model, name=str("handy" + str(1)), config=generate_content_config, instruction=instruction, contractor_id=1)
+    newAgent = AdkAgent(
+        model=model,
+        name=str("handy" + str(1)),
+        config=generate_content_config,
+        instruction=instruction,
+        contractor_id=1,
+    )
     print(newAgent.model)
 
     requirements = [
@@ -89,8 +98,10 @@ if __name__ == "__main__":
     gcs_dir_name = "dev"
 
     # local app testing
-    app = AdkApp(agent=newAgent,
-                 enable_tracing=True, )
+    app = AdkApp(
+        agent=newAgent,
+        enable_tracing=True,
+    )
 
     adk_session = ADKSession(app, user_id=user_id)
 
@@ -103,7 +114,3 @@ if __name__ == "__main__":
 # @todo: need concept of a dictionary to map session id to phone number for conversation continuity
 
 # #todo: need concept of "knowledge docs" for individual clients and contractors - is GCS the way to do RAG with vertex?
-
-
-
-

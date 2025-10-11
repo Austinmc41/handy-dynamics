@@ -8,4 +8,3 @@ class ADKSessionDB(Base):
     session_id = Column(Integer, primary_key=True, index=True)
     created_at = Column(DateTime)
     last_active = Column(DateTime)
-

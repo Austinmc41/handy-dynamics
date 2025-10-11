@@ -12,14 +12,24 @@ class ContractorService:
         return self.repository.get_all()
 
     def create_contractor(self, name, created_at, email, phone_no) -> Contractor:
-        contractor = Contractor(name=name, created_at=created_at, email=email, phone_no=phone_no)
+        contractor = Contractor(
+            name=name, created_at=created_at, email=email, phone_no=phone_no
+        )
         self.repository.add(contractor)
         return contractor
 
-    def update_contractor(self, contractor_id, name, created_at, email, phone_no) -> Optional[Contractor]:
+    def update_contractor(
+        self, contractor_id, name, created_at, email, phone_no
+    ) -> Optional[Contractor]:
         contractor = self.repository.get_by_id(contractor_id)
         if contractor:
-            updated_contractor = Contractor(id=contractor_id, name=name, created_at=created_at, email=email, phone_no=phone_no)
+            updated_contractor = Contractor(
+                id=contractor_id,
+                name=name,
+                created_at=created_at,
+                email=email,
+                phone_no=phone_no,
+            )
             self.repository.update(updated_contractor)
             return updated_contractor
         return None

@@ -12,7 +12,12 @@ router = APIRouter(
     tags=["bot_users"],
 )
 
-@router.get('/', response_model=List[BotUser])
-def get_bot_users(phone_no: Optional[str] = None, name: Optional[str] = None, repo = Depends(get_bot_user_repository)):
+
+@router.get("/", response_model=List[BotUser])
+def get_bot_users(
+    phone_no: Optional[str] = None,
+    name: Optional[str] = None,
+    repo=Depends(get_bot_user_repository),
+):
     service = BotUserService(repo)
     return service.get_bot_users(phone_no=phone_no, name=name)

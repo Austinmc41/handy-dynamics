@@ -6,5 +6,7 @@ from api.models.schemas.bot_user import BotUser
 
 class BotUserRepository(ABC):
     @abstractmethod
-    def get_all(self, phone_no: Optional[str] = None, name: Optional[str] = None) -> List[BotUser]:
+    def get_all(
+        self, phone_no: Optional[str] = None, name: Optional[str] = None
+    ) -> List[BotUser]:
         pass

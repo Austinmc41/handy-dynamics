@@ -12,26 +12,29 @@ router = APIRouter(
     tags=["agents"],
 )
 
-@router.get('/', response_model=List[Agent])
-def get_agents(repo = Depends(get_agent_repository)):
+
+@router.get("/", response_model=List[Agent])
+def get_agents(repo=Depends(get_agent_repository)):
     service = AgentService(repo)
     return service.get_agents()
 
-@router.post('/')
-def create_agent(created_at: datetime,
-                 contractor_id: int,
-                 repo = Depends(get_agent_repository)):
+
+@router.post("/")
+def create_agent(
+    created_at: datetime, contractor_id: int, repo=Depends(get_agent_repository)
+):
     service = AgentService(repo)
     agent = service.create_agent(created_at, contractor_id)
     return agent.model_dump()
+
 
 @router.put("/{agent_id}")
 def update_agent(
     agent_id: int,
     created_at: datetime,
     contractor_id: int,
-    repo=Depends(get_agent_repository)
-    ):
+    repo=Depends(get_agent_repository),
+):
     service = AgentService(repo)
     updated_agent = service.update_agent(agent_id, created_at, contractor_id)
     if not updated_agent:

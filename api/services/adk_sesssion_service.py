@@ -15,5 +15,3 @@ class ADKSessionService:
     def get_adk_session_by_phone(self, phone_no, bot_user_repo: BotUserRepository):
         bot_user = bot_user_repo.get_all(phone_no=phone_no)
         return self.adk_repository.get_session_by_user(bot_user)
-
-

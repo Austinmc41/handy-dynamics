@@ -12,7 +12,9 @@ class AlchemyBotUserRepository(BotUserRepository):
     def __init__(self, session: Session):
         self.session = session
 
-    def get_all(self, phone_no: Optional[str] = None, name: Optional[str] = None) -> List[BotUser]:
+    def get_all(
+        self, phone_no: Optional[str] = None, name: Optional[str] = None
+    ) -> List[BotUser]:
         query_users = self.session.query(BotUserDB)
         filters = []
 
@@ -24,4 +26,7 @@ class AlchemyBotUserRepository(BotUserRepository):
 
         query_users = query_users.filter(and_(*filters))
 
-        return [BotUser.model_validate(query_user, from_attributes=True) for query_user in query_users.all()]
+        return [
+            BotUser.model_validate(query_user, from_attributes=True)
+            for query_user in query_users.all()
+        ]

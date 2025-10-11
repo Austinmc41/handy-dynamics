@@ -3,6 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+
 class Contractor(BaseModel):
     id: Optional[int] = None
     name: Optional[str] = None

@@ -3,6 +3,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+
 class BotUser(BaseModel):
     user_id: int
     name: Optional[str] = None

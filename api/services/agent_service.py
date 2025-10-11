@@ -20,7 +20,9 @@ class AgentService:
     def update_agent(self, agent_id: int, created_at: datetime, contractor_id: int):
         agent = self.repository.get_by_id(agent_id)
         if agent:
-            updated_agent = Agent(id=agent_id, created_at=created_at, contractor_id=contractor_id)
+            updated_agent = Agent(
+                id=agent_id, created_at=created_at, contractor_id=contractor_id
+            )
             self.repository.update(updated_agent)
             return updated_agent
         return None

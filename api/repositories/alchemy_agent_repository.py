@@ -12,7 +12,10 @@ class AlchemyAgentRepository(AgentRepository):
 
     def get_all(self) -> List[Agent]:
         query_agents = self.session.query(AgentDB)
-        return [Agent.model_validate(query_agent, from_attributes=True) for query_agent in query_agents.all()]
+        return [
+            Agent.model_validate(query_agent, from_attributes=True)
+            for query_agent in query_agents.all()
+        ]
 
     def add(self, agent):
         agent_db = AgentDB(**agent.dict())

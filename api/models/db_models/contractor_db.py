@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship, mapped_column
 
 from api.models.db_models import Base
 
+
 class ContractorDB(Base):
     __tablename__ = "contractor"
     id = mapped_column(Integer, primary_key=True, autoincrement=True, index=True)
