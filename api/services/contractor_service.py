@@ -13,7 +13,7 @@ class ContractorService:
 
     def create_contractor(self, name, created_at, email, phone_no) -> Contractor:
         contractor = Contractor(name=name, created_at=created_at, email=email, phone_no=phone_no)
-        self.repository.add(contractor)
+        contractor = self.repository.add(contractor)
         return contractor
 
     def update_contractor(self, contractor_id, name, created_at, email, phone_no) -> Optional[Contractor]:
