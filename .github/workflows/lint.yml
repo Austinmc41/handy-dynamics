@@ -1,0 +1,22 @@
+name: Backend Checks
+
+on:
+  push:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "api/**"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      #----------------------------------------------
+      #       check-out repo and set-up mamba env
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v4
+      
+      - name: Run Linter with Black Formatter
+        uses: psf/black@stable
+      
