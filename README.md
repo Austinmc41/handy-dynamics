@@ -35,3 +35,7 @@ Making the lives of handymen easier by leveraging GenAI to improve client intera
 3. `source .venv/bin/activate`
 4. Run API via `python -m api.main`. You should be able to navigate to `127.0.0.1:8000/docs`
 5. Try making get requests to the endpoints you see
+
+### Run Unit Tests
+1. Make sure you complete the One-time repo setup from the previous section
+2. At the root directory, run `uv run pytest -q`. This command will automatically run unit tests under the `/tests` directory
