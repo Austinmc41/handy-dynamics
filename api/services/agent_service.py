@@ -14,7 +14,7 @@ class AgentService:
 
     def create_agent(self, created_at, contractor_id) -> Agent:
         agent = Agent(created_at=created_at, contractor_id=contractor_id)
-        self.repository.add(agent)
+        agent = self.repository.add(agent)
         return agent
 
     def update_agent(self, agent_id: int, created_at: datetime, contractor_id: int):
@@ -24,3 +24,6 @@ class AgentService:
             self.repository.update(updated_agent)
             return updated_agent
         return None
+
+
+

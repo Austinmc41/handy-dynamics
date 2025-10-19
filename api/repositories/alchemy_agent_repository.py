@@ -18,6 +18,8 @@ class AlchemyAgentRepository(AgentRepository):
         agent_db = AgentDB(**agent.dict())
         self.session.add(agent_db)
         self.session.commit()
+        self.session.refresh(agent_db)
+        return Agent.model_validate(agent_db, from_attributes=True)
 
     def get_by_id(self, agent_id: int) -> Optional[Agent]:
         agent_db = self.session.query(AgentDB).get(agent_id)

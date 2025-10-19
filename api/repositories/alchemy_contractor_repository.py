@@ -15,10 +15,12 @@ class AlchemyContractorRepository(ContractorRepository):
         query_contractors = self.session.query(ContractorDB)
         return [Contractor.model_validate(query_contractor, from_attributes=True) for query_contractor in query_contractors.all()]
 
-    def add(self, contractor: Contractor):
+    def add(self, contractor: Contractor) -> Contractor:
         contractor_db = ContractorDB(**contractor.dict())
         self.session.add(contractor_db)
         self.session.commit()
+        self.session.refresh(contractor_db)
+        return Contractor.model_validate(contractor_db, from_attributes=True)
 
     def get_by_id(self, contractor_id: int) -> Optional[Contractor]:
         contractor_db = self.session.query(ContractorDB).get(contractor_id)
